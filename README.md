@@ -55,5 +55,5 @@ The project utilizes **JWT authentication**, **Context API** for state managemen
 
 ### **1️⃣ Clone the Repository**
 ```sh
-git clone https://github.com/Yasir-Ali-Swe/RBAC-System.git
-cd RBAC-System
+git clone https://github.com/Yasir-Ali-Swe/Role-Based-Access-Control-RBAC-System.git
+
