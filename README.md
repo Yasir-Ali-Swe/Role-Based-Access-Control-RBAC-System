@@ -1,53 +1,48 @@
-# 🛡️ Role-Based Access Control (RBAC) System
+# 🛡️ Role-Based Authentication System (RBAC)
 
-A **MERN Stack** project implementing authentication, authorization, and protected routes based on user roles. This system provides **Users** the ability to register, log in, and log out, while **Admins** can manage users.
+This project is a **learning-focused implementation** of authentication and protected routes based on user roles (**User & Admin**) using the **MERN Stack**.
 
-## 📌 Project Overview
-
-This project implements **Role-Based Access Control (RBAC)** with two user roles:
-
-- **User**: Can register, log in, and log out.
-- **Admin**: Can view all users and delete any user.
-
-The project utilizes **JWT authentication**, **Context API** for state management, and **React Router** for protected routes. **Tailwind CSS** is used for styling.
+## 📌 Project Purpose
+The main goal of this project is to understand:
+- 🔑 **Authentication** (JWT-based)
+- 🚦 **Protected Routes** (for logged-in users)
+- 🛂 **Role-Based Access Control (RBAC)**
+- ⚡ **Defining Routes for Different Users**
 
 ---
 
 ## 🚀 Tech Stack
 
 ### **Frontend**
-- ⚛️ React.js
-- 🌍 React Router (Navigation & Protected Routes)
-- 🎯 Context API (State Management)
-- 🎨 Tailwind CSS (UI Design)
+- ⚛️ React.js (with Context API for state management)
+- 🚏 React Router (for protected routes)
+- 🎨 Tailwind CSS (for basic styling)
 
 ### **Backend**
-- 🟢 Node.js
-- 🚀 Express.js
+- 🟢 Node.js & Express.js
 - 🗄️ MongoDB (Mongoose ODM)
+- 🔑 JSON Web Token (JWT for authentication)
 - 🔒 bcryptjs (Password Hashing)
-- 🔑 JSON Web Token (JWT Authentication)
 
 ---
 
 ## 🎯 Features
 
-### **User Features**
-✅ Register with name, email, and password  
-✅ Login and receive a JWT token (stored in cookies)  
-✅ Logout functionality  
-✅ Access a **protected dashboard** (only for authenticated users)  
+### **User Role**
+✅ Register an account  
+✅ Login & Logout  
+✅ Access user-protected routes  
 
-### **Admin Features**
+### **Admin Role**
 ✅ View all registered users  
 ✅ Delete any user  
-✅ Access an **admin-only dashboard** (protected route)  
+✅ Access admin-protected routes  
 
 ### **Authentication & Security**
 ✅ JWT-based authentication  
 ✅ Password hashing with bcryptjs  
-✅ Protected routes based on user roles  
 ✅ Secure cookies for storing authentication tokens  
+✅ Protected routes based on user roles  
 
 ---
 
