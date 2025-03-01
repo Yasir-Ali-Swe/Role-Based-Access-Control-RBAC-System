@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import mongoose from "mongoose";
 import router from "./Routers/authRouter.js"
+import adminRouter from "./Routers/adminRouter.js"
 
 dotenv.config();
 const server = express();
@@ -23,3 +24,4 @@ mongoose.connect(CONNECTION_STRING).then(() => {
     console.log(`error ${error}`)
 });
 server.use("/api/auth", router);
+server.use("/api/admin",adminRouter);

@@ -14,6 +14,7 @@ export const verifyIsAdmin = async (req, res, next) => {
         if (!user) {
             return res.status(401).json({ success: false, message: "User is not logged in." });
         }
+
         if (user.role !== "admin") {
             return res.status(401).json({ success: false, message: "User is not admin." });
         }
