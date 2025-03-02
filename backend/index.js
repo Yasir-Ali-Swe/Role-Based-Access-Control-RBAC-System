@@ -10,7 +10,12 @@ dotenv.config();
 const server = express();
 server.use(express.json());
 server.use(cookieParser());
-server.use(cors());
+server.use(cors(
+    {
+        origin: "http://localhost:5173",
+        credentials: true
+    }
+));
 
 const CONNECTION_STRING = process.env.CONNECTION_STRING;
 const PORT = process.env.PORT || 5000;
@@ -20,8 +25,8 @@ mongoose.connect(CONNECTION_STRING).then(() => {
     server.listen(PORT, () => {
         console.log(`Listening on port ${PORT}`);
     });
-}).catch((error)=>{
+}).catch((error) => {
     console.log(`error ${error}`)
 });
 server.use("/api/auth", router);
-server.use("/api/admin",adminRouter);
+server.use("/api/admin", adminRouter);
