@@ -4,7 +4,7 @@ const Admin = () => {
   return (
     <div className='bg-purple-950 h-screen flex justify-center'>
     <div className="ProfileContainer">
-      <h1 className='text-3xl text-white font-bold text-center pt-10'>User Profile</h1>
+      <h1 className='text-3xl text-white font-bold text-center pt-10'>Admin Panel</h1>
       <div className='TableContainer flex justify-center mt-5'>
         <table>
           <thead>
