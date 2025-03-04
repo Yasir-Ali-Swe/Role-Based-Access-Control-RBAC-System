@@ -4,7 +4,6 @@ import { AuthContext } from '../Context/AuthContext.jsx'
 
 const Profile = () => {
   const {user}=useContext(AuthContext);
-  console.log(user);
   return (
     <div className='bg-purple-950 h-screen flex justify-center'>
       <div className="ProfileContainer">

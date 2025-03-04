@@ -1,14 +1,26 @@
 import React from 'react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link ,useNavigate} from 'react-router-dom'
+import axios from "axios"
+import toast from "react-hot-toast"
 
 const Registration = () => {
+  const navigate=useNavigate();
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const handelSubmit=(e)=>{
+  const handelSubmit=async (e)=>{
     e.preventDefault();
-    console.log(name,email,password);
+    try {
+      const responce=await axios.post("http://localhost:3000/api/auth/register",{name,email,password});
+      console.log(responce.data.success);
+      if(responce.data.success){
+        toast.success(responce.data.message);
+        navigate("/login");
+      }
+    } catch (error) {
+      toast.error("Something went wrong.")
+    }
   }
   return (
     <div className='LoginForm w-screen h-screen flex justify-center items-center bg-purple-950'>

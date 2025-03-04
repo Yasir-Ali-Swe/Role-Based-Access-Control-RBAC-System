@@ -6,7 +6,7 @@ import toast from 'react-hot-toast'
 import {AuthContext} from "../Context/AuthContext.jsx"
 
 const Login = () => {
-  const {user,login}=useContext(AuthContext);
+  const {login}=useContext(AuthContext);
   const navigate=useNavigate();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -21,7 +21,7 @@ const Login = () => {
       }
       
     } catch (error) {
-      toast.error("Something went wrong");
+      toast.error(error.response?.data?.message || 'Something went wrong');
     }
     
   }
