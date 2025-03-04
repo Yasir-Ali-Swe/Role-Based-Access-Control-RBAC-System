@@ -15,7 +15,6 @@ export const AuthContextProvider = ({children}) => {
    }
    const logout=()=>{
     localStorage.removeItem("user");
-    // localStorage.clear();
     setUser({name:"",email:"",role:""});
    }
     return (
