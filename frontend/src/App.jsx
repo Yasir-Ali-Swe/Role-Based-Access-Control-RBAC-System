@@ -6,11 +6,13 @@ import Profile from "./pages/Profile.jsx";
 import Admin from "./pages/Admin.jsx";
 import Registration from "./pages/Registration.jsx";
 import Login from "./pages/Login.jsx";
+import {Toaster} from "react-hot-toast";
 
 const App = () => {
   return (
     <div>
       <BrowserRouter>
+      <Toaster/>
       <Routes>
         <Route path="/" element={<Layout />}>
         <Route index element={<Home />}/>

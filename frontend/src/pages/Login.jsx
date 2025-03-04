@@ -1,12 +1,29 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link ,useNavigate} from 'react-router-dom'
 import { useState } from 'react'
+import axios from 'axios'
+import toast from 'react-hot-toast'
+import {AuthContext} from "../Context/AuthContext.jsx"
+
 const Login = () => {
+  const {user,login}=useContext(AuthContext);
+  const navigate=useNavigate();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const handelSubmit=(e)=>{
+  const handelSubmit=async (e)=>{
     e.preventDefault();
-    console.log(email,password);
+    try {
+      const response =await axios.post('http://localhost:3000/api/auth/login',{email,password},{withCredentials:true});
+      if(response.data.success){
+        toast.success(response.data.message);
+        login(response.data.user.name,response.data.user.email,response.data.user.role);
+        navigate("/");
+      }
+      
+    } catch (error) {
+      toast.error("Something went wrong");
+    }
+    
   }
   return (
     <div className='LoginForm w-screen h-screen flex justify-center items-center bg-purple-950'>
