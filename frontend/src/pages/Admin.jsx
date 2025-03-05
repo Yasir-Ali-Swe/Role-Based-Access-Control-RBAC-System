@@ -1,6 +1,22 @@
 import React from 'react'
-
+import axios from 'axios'
+import { useState ,useEffect} from 'react'
+import toast from 'react-hot-toast'
 const Admin = () => {
+  const [users,setUsers]=useState([]);
+  useEffect(()=>{
+    const getUsers=async ()=>{
+      try {
+        const response=await axios.get("http://localhost:3000/api/admin/getAllUsers",{withCredentials:true});
+      if(response.data.success){
+        setUsers(response.data.users);
+      }
+      } catch (error) {
+        toast.error("Something went wrong")
+      }
+    }
+    getUsers();
+  },[])
   return (
     <div className='bg-purple-950 h-screen flex justify-center'>
     <div className="ProfileContainer">
@@ -17,13 +33,19 @@ const Admin = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-            <td className='border-2 border-white px-4 py-2 text-white'>1</td>
-              <td className='border-2 border-white px-4 py-2 text-white'>Yasir Ali</td>
-              <td className='border-2 border-white px-4 py-2 text-white'>yasir@gmail.com</td>
-              <td className='border-2 border-white px-4 py-2 text-white'>Admin</td>
-              <td className='border-2 border-white px-4 py-2 text-white'><button className='cursor-pointer bg-red-600 px-3 py-1 border border-white rounded-md text-xl font-bold text-white'>Delete</button></td>
-            </tr>
+           {
+            users.map((user,index)=>{
+              return(
+                <tr key={index}>
+                <td className='border-2 border-white px-4 py-2 text-white'>{index+1}</td>
+                  <td className='border-2 border-white px-4 py-2 text-white'>{user.name}</td>
+                  <td className='border-2 border-white px-4 py-2 text-white'>{user.email}</td>
+                  <td className='border-2 border-white px-4 py-2 text-white'>{user.role}</td>
+                  <td className='border-2 border-white px-4 py-2 text-white'><button className='cursor-pointer bg-red-600 px-3 py-1 border border-white rounded-md text-xl font-bold text-white'>Delete</button></td>
+                </tr>
+              )
+            })
+           }
           </tbody>
         </table>
       </div>
