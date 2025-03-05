@@ -20,6 +20,20 @@ const Admin = () => {
     };
     getUsers();
   }, []);
+  const deleteUser = async (id) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:3000/api/admin/deleteUser/${id}`,
+        { withCredentials: true }
+      );
+      if (response.data.success) {
+        toast.success(response.data.message);
+        setUsers((preUsers) => preUsers.filter((user) => user._id !== id));
+      }
+    } catch (error) {
+      toast.error("Something went wrong");
+    }
+  };
   return (
     <div className="bg-purple-950 h-screen flex justify-center">
       <div className="ProfileContainer">
@@ -64,7 +78,10 @@ const Admin = () => {
                       {user.role}
                     </td>
                     <td className="border-2 border-white px-4 py-2 text-white">
-                      <button className="cursor-pointer bg-red-600 px-3 py-1 border border-white rounded-md text-xl font-bold text-white">
+                      <button
+                        onClick={() => deleteUser(user._id)}
+                        className="cursor-pointer bg-red-600 px-3 py-1 border border-white rounded-md text-xl font-bold text-white"
+                      >
                         Delete
                       </button>
                     </td>
