@@ -7,8 +7,10 @@ import Admin from "./pages/Admin.jsx";
 import Registration from "./pages/Registration.jsx";
 import Login from "./pages/Login.jsx";
 import { Toaster } from "react-hot-toast";
-
+import { useContext } from "react";
+import { AuthContext } from "./Context/AuthContext.jsx";
 const App = () => {
+  const { user } = useContext(AuthContext);
   return (
     <>
       <BrowserRouter>
@@ -16,10 +18,19 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="admin" element={<Admin />} />
-            <Route path="registration" element={<Registration />} />
-            <Route path="login" element={<Login />} />
+            {user ? (
+              <>
+                <Route path="profile" element={<Profile />} />
+                {user.role === "admin" && (
+                  <Route path="admin" element={<Admin />} />
+                )}
+              </>
+            ) : (
+              <>
+                <Route path="registration" element={<Registration />} />
+                <Route path="login" element={<Login />} />
+              </>
+            )}
           </Route>
         </Routes>
       </BrowserRouter>
