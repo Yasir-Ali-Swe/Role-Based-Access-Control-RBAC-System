@@ -18,19 +18,10 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            {user ? (
-              <>
-                <Route path="profile" element={<Profile />} />
-                {user.role === "admin" && (
-                  <Route path="admin" element={<Admin />} />
-                )}
-              </>
-            ) : (
-              <>
-                <Route path="registration" element={<Registration />} />
-                <Route path="login" element={<Login />} />
-              </>
-            )}
+            <Route path="profile" element={<Profile />} />
+            <Route path="registration" element={<Registration />} />
+            <Route path="login" element={<Login />} />
+            {user && user.role==="admin" && <Route path="admin" element={<Admin />} />}
           </Route>
         </Routes>
       </BrowserRouter>
